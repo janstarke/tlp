@@ -45,7 +45,7 @@ jobs:
     - name: Package redistributables
       run: |
         mkdir "${{ github.event.repository.name }}"
-        mv *.dtx *.ins *.pdf Makefile README.md "${{ github.event.repository.name }}"
+        mv *.dtx *.ins *.pdf Makefile README.md LICENSE "${{ github.event.repository.name }}"
         tar czf "$ARCHIVE_NAME".tar.gz "${{ github.event.repository.name }}"
     
     - name: create-checksum
