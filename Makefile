@@ -1,6 +1,6 @@
 .PHONY: clean all
 
-PACKAGE=tlp
+PACKAGE=traffic-light-protocol
 OUTDIR=out
 
 # the -shell-escape option is not necessary for TeXLive 2024+,

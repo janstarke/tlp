@@ -1,20 +1,20 @@
 %%
-%% This is file `tlp.sty',
+%% This is file `traffic-light-protocol.sty',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% tlp.dtx  (with options: `package')
+%% traffic-light-protocol.dtx  (with options: `package')
 %% 
 %% IMPORTANT NOTICE:
 %% 
 %% For the copyright see the source file.
 %% 
 %% Any modified versions of this file must be renamed
-%% with new filenames distinct from tlp.sty.
+%% with new filenames distinct from traffic-light-protocol.sty.
 %% 
 %% For distribution of the original source see the terms
-%% for copying and modification in the file tlp.dtx.
+%% for copying and modification in the file traffic-light-protocol.dtx.
 %% 
 %% This generated file may be distributed as long as the
 %% original source files, as listed above, are part of the
@@ -57,7 +57,7 @@
 \ProcessKeysPackageOptions{tlp/color-mode}
 \ExplSyntaxOff
 \ExplSyntaxOn
-\msg_new:nnn{tlp}{illegal_color_mode}
+\msg_new:nnn{traffic-light-protocol}{illegal_color_mode}
     {Illegal\ color\ mode:\ #1\ (only\ 'rgb'\ and\ 'cmyk'\ are\ supported)}
 \cs_new_protected_nopar:Npn\tlp_set_rgb_colornames:{
     \definecolor{tlp-bg-black}{RGB}{0,0,0}
@@ -77,7 +77,7 @@
 {
     {rgb} {\tlp_set_rgb_colornames:}
     {cmyk} {\tlp_set_cmyk_colornames:}
-} {\msg_err:nnV{tlp}{illegal_color_mode}{\color_mode}}
+} {\msg_err:nnV{traffic-light-protocol}{illegal_color_mode}{\color_mode}}
 \ExplSyntaxOff
 \ExplSyntaxOn
 \NewDocumentCommand{\tlp}{m}{
@@ -89,4 +89,4 @@
 \ExplSyntaxOff
 \endinput
 %%
-%% End of file `tlp.sty'.
+%% End of file `traffic-light-protocol.sty'.

@@ -1,11 +1,12 @@
-% \title{Commands to show \href{https://www.first.org/tlp/}{TLP 2.0} \\ (Traffic Light Protocol) \\ tags}
+% \title{Commands to show \href{https://www.first.org/tlp/}{TLP 2.0} \\ (Traffic Light Protocol) \\ labels}
 %
 % \author{Jan Starke \\ \texttt{jan.starke@bdosecurity.de}}
 %
 % \changes{0.1}{07.04.2025}{inital Version}
+% \changes{0.2}{08.04.2025}{rename package to traffic-light-protocol}
 % \iffalse
 %<*driver>
-\ProvidesFile{tlp.dtx}
+\ProvidesFile{traffic-light-protocol.dtx}
 %</driver>
 %<*package>
 \NeedsTeXFormat{LaTeX2e}[2003/12/01]
@@ -16,7 +17,7 @@
 \documentclass{ltxdoc}
 \usepackage{hypdoc}
 \usepackage{hyperref}
-\usepackage{tlp}
+\usepackage{traffic-light-protocol}
 \RecordChanges
 \begin{document}
 \DocInput{\jobname.dtx}
@@ -33,8 +34,8 @@
 % \PrintIndex
 % \newpage
 % \begin{abstract}
-% This document describes usage and implementation of the |tlp| package,
-% which allows typesetting TLP tags in your document.
+% This document describes usage and implementation of the |traffic-light-protocol| package,
+% which allows typesetting TLP labels in your document.tags
 % \end{abstract}
 % 
 % \section{Usage}
@@ -115,7 +116,7 @@
 %    \begin{macrocode}
 %
 \ExplSyntaxOn
-\msg_new:nnn{tlp}{illegal_color_mode}
+\msg_new:nnn{traffic-light-protocol}{illegal_color_mode}
     {Illegal\ color\ mode:\ #1\ (only\ 'rgb'\ and\ 'cmyk'\ are\ supported)}
 \cs_new_protected_nopar:Npn\tlp_set_rgb_colornames:{
     \definecolor{tlp-bg-black}{RGB}{0,0,0}
@@ -135,11 +136,11 @@
 {
     {rgb} {\tlp_set_rgb_colornames:}
     {cmyk} {\tlp_set_cmyk_colornames:}
-} {\msg_err:nnV{tlp}{illegal_color_mode}{\color_mode}}
+} {\msg_err:nnV{traffic-light-protocol}{illegal_color_mode}{\color_mode}}
 \ExplSyntaxOff
 %    \end{macrocode}
 %
-% Now we can define the |tlp| macro.
+% Now we can define the |\tlp| macro.
 %
 % \begin{macro}{\tlp}
 %    \begin{macrocode}
