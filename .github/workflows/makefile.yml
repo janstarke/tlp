@@ -17,8 +17,6 @@ jobs:
     - name: Build files
       run: make
 
-    - name: collect redistributable files
-      run: mkdir "${{ github.event.repository.name }}"
     - name: Package redistributables
       run: |
         mkdir "${{ github.event.repository.name }}"
