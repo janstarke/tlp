@@ -14,8 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build files
-      run: make
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: "${{ github.event.repository.name }}.ins"
+
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: "${{ github.event.repository.name }}.dtx"
 
     - name: upload-package
       id: upload-package
@@ -38,7 +43,7 @@ jobs:
         asset_content_type: text/plain
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+
     - name: Package redistributables
       run: |
         mkdir "${{ github.event.repository.name }}"
