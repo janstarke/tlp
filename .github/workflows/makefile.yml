@@ -1,0 +1,50 @@
+name: release
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build files
+      run: make
+
+    - name: Package redistributables
+      run: tar czf "$ARCHIVE_NAME".tar.gz *.dtx *.ins *.pdf Makefile README.md
+    
+    - name: create-checksum
+      id: create-checksum
+      run: |
+        sha256sum "$ARCHIVE_NAME".tar.gz >checksum.txt
+        echo "::set-output name=checksum::$(cut -d ' ' -f 1 checksum.txt)"
+        
+    - name: upload-archive
+      id: upload-archive
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ env.ARCHIVE_NAME }}.tar.gz
+        asset_name: ${{ env.ARCHIVE_NAME }}.tar.gz
+        asset_content_type: application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: upload-checksum
+      id: upload-checksum
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: checksum.txt
+        asset_name: checksum.txt
+        asset_content_type: text/plain
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
