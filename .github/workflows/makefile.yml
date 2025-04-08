@@ -17,6 +17,28 @@ jobs:
     - name: Build files
       run: make
 
+    - name: upload-package
+      id: upload-package
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ github.event.repository.name }}.sty
+        asset_name: ${{ github.event.repository.name }}.sty
+        asset_content_type: text/plain
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: upload-documentation
+      id: upload-documentation
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ github.event.repository.name }}.pdf
+        asset_name: ${{ github.event.repository.name }}.pdf
+        asset_content_type: text/plain
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Package redistributables
       run: |
         mkdir "${{ github.event.repository.name }}"
@@ -50,4 +72,5 @@ jobs:
         asset_content_type: text/plain
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
   
