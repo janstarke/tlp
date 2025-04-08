@@ -16,13 +16,8 @@ jobs:
 
     - uses: xu-cheng/latex-action@v3
       with:
-        continue_on_error: true
         latexmk_use_lualatex: true
-        root_file: "${{ github.event.repository.name }}.ins"
-
-    - uses: xu-cheng/latex-action@v3
-      with:
-        latexmk_use_lualatex: true
+        pre_compile: lualatex ${{ github.event.repository.name }}.ins"
         root_file: "${{ github.event.repository.name }}.dtx"
 
     - name: upload-package
